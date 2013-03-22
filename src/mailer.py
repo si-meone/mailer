@@ -3,7 +3,7 @@ import smtplib
 
 fromaddr = ''
 toaddrs  = ''
-msg = 'There was a terrible error that occured and I wanted you to know!'
+msg = 'There was a terrible error that occured and I wanted you to know about'
 
 
 # Credentials (if needed)
