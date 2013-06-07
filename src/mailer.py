@@ -4,7 +4,9 @@ import smtplib
 def mailer():
     fromaddr = ''
     toaddrs  = ''
-    msg = 'There was a terrible error that occured and I wanted you to know about'
+    subject = "ip today"
+    text = 'text'
+    msg = 'Subject: %s\n\n%s' % (subject, get_ip_address())
     
     
     # Credentials (if needed)
@@ -79,5 +81,27 @@ def get_ip_address():
         print('Can used Method 4: ' + ipaddr)
         #return ipaddr
 
+def has_ip_address_changed(ip_address):
+    try:
+        with open ("ip_address", "r") as myfile:
+            ip_in_file = myfile.read().replace('\n', '')
+    except:
+        print 'no ip set writing file'
+        fw = open('ip_address', 'w')
+        fw.write(ip_address)
+        return True
+
+    if ip_address == ip_in_file:
+        print 'ip same'
+        return False
+    else :
+        print 'ip different'
+        fw = open('ip_address', 'w')
+        fw.write(ip_address)
+        return True
+
+
 if __name__ == '__main__':
-    mailer()
+    ip = get_ip_address()
+    if has_ip_address_changed(ip):
+        mailer(ip)
