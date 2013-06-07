@@ -1,6 +1,9 @@
 __author__ = 'snasrallah'
 import smtplib
 
+# designed to be run via cron so crontab -e
+# */15 * * * * python /home/username/scripts/mailer.py # JOB_ID_1
+
 def mailer():
     fromaddr = ''
     toaddrs  = ''
